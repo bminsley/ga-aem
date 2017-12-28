@@ -54,7 +54,7 @@ void LE::initialise()
 	UpperFractionalWidth = 1.84;
 };
 
-void LE::setconductivitythickness(size_t nlayers, double* conductivity, double* thickness)
+void LE::setconductivitythickness(const size_t nlayers, const double* conductivity, const double* thickness)
 {
 	NumLayers = nlayers;
 	Layer.resize(NumLayers);	
@@ -64,7 +64,7 @@ void LE::setconductivitythickness(size_t nlayers, double* conductivity, double* 
 	setmeanlog10conductivity();
 };
 ////////////////////////////////////////////////////////////////
-void LE::setlog10conductivitylog10thickness(size_t nlayers, double* log10conductivity, double* log10thickness)
+void LE::setlog10conductivitylog10thickness(const size_t nlayers, const double* log10conductivity, const double* log10thickness)
 {
 	NumLayers = nlayers;
 	Layer.resize(NumLayers);	
@@ -584,7 +584,7 @@ inline PropogationMatrix LE::dPdTj(const size_t& fi, const size_t& ai, const siz
 		return M * A.Layer[li + 1].LayerPostMatrix;		
 	}
 	else if (li > 0 && li < NumLayers - 1){		
-		if (li == NumLayers - 2) A.Layer[li].LayerPreMatrix * M;
+		if (li == NumLayers - 2) return A.Layer[li].LayerPreMatrix * M;
 		return A.Layer[li].LayerPreMatrix * M * A.Layer[li + 1].LayerPostMatrix;
 	}
 	//Last layer case

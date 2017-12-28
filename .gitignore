@@ -69,9 +69,6 @@ TestResult.xml
 *.plg
 *.opt
 *.ncb
-*.mexw32
-*.mexw64
-*.mexa64
 
 # Chutzpah Test files
 _Chutzpah*
@@ -103,10 +100,19 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
+# Python
+*.pyc
+*.pyo
+/python/gatdaem1d/gatdaem1d.exp  #Ignore the export lib
+/python/gatdaem1d/gatdaem1d.lib  #Ignore the lib
+/python/gatdaem1d/*.so           #Ignore the Linux shared libraries
+!/python/gatdaem1d/gatdaem1d.dll #Keep the Windows dll
+
+# Keep the Windows x64 Release and FFTW binaries
 !/bin/x64/Release/*      #Make exception for these
 !/third_party/*          #Make exception for these
 
+# Renove all raijin.nci.org.au binaries
 #Compiled executables on linux
-/bin/raijin-intel/*
-/bin/raijin-gnu/*
+/bin/raijin/*
 
